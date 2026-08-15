@@ -1,4 +1,3 @@
-Weather-Forecast
 Weather-Forecast — это Android-приложение для отслеживания прогноза погоды.
 
 🛠 Стек технологий
