@@ -12,7 +12,8 @@ import retrofit2.Callback
 import retrofit2.Response
 
 class SearchRepositoryImpl() : SearchRepository {
-    private var token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9wZmEuZm9yZWNhLmNvbVwvYXV0aG9yaXplXC90b2tlbiIsImlhdCI6MTc4NTMxODQ3NCwiZXhwIjo5OTk5OTk5OTk5LCJuYmYiOjE3ODUzMTg0NzQsImp0aSI6IjgyMGFlNzI0MTkxMTk4MWIiLCJzdWIiOiJzZXIyaC1hbmRyZWV2IiwiZm10IjoiWERjT2hqQzQwK0FMamxZVHRqYk9pQT09In0.ENMpPlkYGkGxUrZmSmkeoiXsCJVVv9e35FCBBLyFoBs"
+    
+    private var token = BuildConfig.SERVER_KEY
     private val mapper = ForecastLocationMapper()
 
     override fun performSearch(query: String, onResult: (List<ForecastLocation>) -> Unit) {
@@ -52,8 +53,8 @@ class SearchRepositoryImpl() : SearchRepository {
     private fun authenticate(onComplete: (Boolean) -> Unit) {
         RetrofitNetworkClient.retrofit.authenticate(
             ForecastAuthRequest(
-                user = "ser2h-andreev",
-                password = "xBvug9LPeOJ1"
+            user = BuildConfig.SERVER_USERNAME,
+                password = BuildConfig.SERVER_PASSWORD
             )
         ).enqueue(object : Callback<ForecastAuthResponse> {
             override fun onResponse(
